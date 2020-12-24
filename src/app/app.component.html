@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="main">            
+            <div class="input-group">
+              <input type="text" (keyup)="onChange(ref.value)" [(ngModel)]="input_value" class="form-control" placeholder="Search wiki.." #ref>
+              <div class="input-group-append">
+                <button (click)="onClick(ref.value)" class="btn btn-secondary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    </div>
+    <hr class="w-50">
+    <div class="row text-center justify-content-center">
+        
+            <ng-container *ngIf="(input_value).length==0; else elseTemplate">
+              <p class="text-info">Type anything and Click Search</p>
+            </ng-container>
+            <ng-template #elseTemplate>
+
+              <ng-container *ngIf="data=='Nothing'; then thenTemplate; else elseTemplate"></ng-container>
+            <ng-template #thenTemplate>
+              <h5>No Result ! <small class="text-info">type valid keyword</small></h5>
+            </ng-template>
+            <ng-template #elseTemplate>
+                <ng-container *ngIf="isEmptyObject(data); else elseTemplate">
+                  
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <div class="card col-md-6" style="width: 18rem;">
+                    <img class="card-img-top" src="{{data.thumbnail.source}}" alt="Image">
+                    <div class="card-body">
+                      <h5 class="card-title">{{data.title}}</h5>
+                      <p class="card-text text-justify">{{data.extract}}</p>
+                    </div>
+                   </div>
+                  
+                </ng-template>
+                
+              
+            </ng-template>
+              
+            </ng-template>
+            
+
+
+            
+    </div> 
+</div>
