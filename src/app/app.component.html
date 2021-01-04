@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
     <div class="row">
         <div class="main">            
@@ -24,27 +25,23 @@
               <h5>No Result ! <small class="text-info">type valid keyword</small></h5>
             </ng-template>
             <ng-template #elseTemplate>
-                <ng-container *ngIf="isEmptyObject(data); else elseTemplate">
-                  
-                </ng-container>
-                <ng-template #elseTemplate>
-                  <div class="card col-md-6" style="width: 18rem;">
-                    <img class="card-img-top" src="{{data.thumbnail.source}}" alt="Image">
-                    <div class="card-body">
+                
+                  <div class="card col-md-6 shadow text-center" style="width: 18rem;">
+                    <div class="card-body ">
+                      <ng-container *ngIf="!data.title"><p class="text-info">Result will Appear here</p></ng-container>
+                      <ng-container *ngIf="data.thumbnail"><img bind-src="data.thumbnail.source"></ng-container>
                       <h5 class="card-title">{{data.title}}</h5>
                       <p class="card-text text-justify">{{data.extract}}</p>
                     </div>
                    </div>
                   
-                </ng-template>
+                
                 
               
             </ng-template>
               
             </ng-template>
             
-
-
-            
     </div> 
 </div>
+<app-footer></app-footer>

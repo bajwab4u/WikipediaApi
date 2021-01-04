@@ -5,8 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
+  
 
   constructor(private http: HttpClient) { }
+  
   getWiki(title: string) {
     const tempTitle = title.replace(' ', '_') + '?redirect=true';
     const baseUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/';

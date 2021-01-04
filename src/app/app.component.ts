@@ -11,7 +11,13 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
    constructor(private _data:DataService){ }
-   data:any={}
+   data:any={
+     title:'',
+     thumbnail:{
+       source:''
+     },
+     extract:''
+   }
    
    input_value="";
    
@@ -26,9 +32,9 @@ export class AppComponent {
     }
 
     onClick(search){
-    this._data.getWiki(search).subscribe(data => { 
+    let val=search.split(" ").map(([firstChar,...rest])=>firstChar.toUpperCase()+rest.join("").toLowerCase()).join(" ")
+    this._data.getWiki(val).subscribe(data => { 
       this.data = data;
-      console.log(data) 
     },
     err=>{
       this.data="Nothing"; 
